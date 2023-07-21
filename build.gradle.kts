@@ -1,6 +1,7 @@
 plugins {
     application
     kotlin("jvm").version("1.7.21")
+    id ("org.sonatype.gradle.plugins.scan") version "2.6.0"
 }
 
 application {
@@ -48,4 +49,12 @@ dependencies {
 
     testImplementation("io.mockk:mockk:1.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.1")
+}
+
+nexusIQScan {
+    username =
+        "admin" // Make sure to use an user with the role "Application Evaluator" in the given IQ Server application
+    password = "admin1234"
+    serverUrl = "http://localhost:8070"
+    applicationId = "Kotlin"
 }
